@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --verde-aura: #2E3A1D;
+  --verde-oliva: #5C6B3C;
+  --verde-salvia: #AEBF96;
+  --verde-nevoa: #DFE6D0;
+  --creme: #F3EFE2;
+  --papel: #FBFAF5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--papel);
+  color: var(--verde-aura);
+  font-family: 'Hanken Grotesk', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}

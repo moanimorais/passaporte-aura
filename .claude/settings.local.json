@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\User\\\\.claude\\\\passaporte-aura\\\\public\\\\icons\")"
+    ]
+  }
+}
