@@ -32,7 +32,7 @@ export async function updateSession(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Rotas públicas que não precisam de login
-  const publicRoutes = ["/login", "/parceiro", "/auth/callback", "/demo", "/api/"];
+  const publicRoutes = ["/", "/login", "/parceiro", "/auth/callback", "/demo", "/api/"];
   const isPublic = publicRoutes.some((r) => pathname.startsWith(r));
 
   if (!user && !isPublic) {
