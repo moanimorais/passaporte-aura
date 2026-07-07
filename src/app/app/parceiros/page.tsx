@@ -1,11 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SEED_PARTNERS, SEED_REDEMPTIONS } from "@/lib/seed-data";
 
 const CATEGORIAS = ["Todas", "Gastronomia", "Surf & Esportes", "Hospedagem", "Artesanato", "Bem-estar"];
 
-type Partner = typeof SEED_PARTNERS[number];
+type Partner = {
+  id: string;
+  nome: string;
+  categoria: string;
+  cidade: string;
+  instagram?: string;
+  descricao?: string;
+  benefit: string;
+  pin: string;
+  emoji: string;
+  status: string;
+};
+
 type ModalState =
   | { type: "idle" }
   | { type: "pin"; partner: Partner }
@@ -17,11 +29,28 @@ export default function ParceirosPage() {
   const [busca, setBusca] = useState("");
   const [usados, setUsados] = useState<string[]>(SEED_REDEMPTIONS);
   const [modal, setModal] = useState<ModalState>({ type: "idle" });
+  const [partners, setPartners] = useState<Partner[]>(SEED_PARTNERS as Partner[]);
+
+  useEffect(() => {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!supabaseUrl || !supabaseKey) return;
+
+    fetch(`${supabaseUrl}/rest/v1/partners?status=eq.ativo&select=id,nome,categoria,cidade,instagram,descricao,benefit,pin,emoji,status`, {
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => { if (Array.isArray(data) && data.length > 0) setPartners(data); })
+      .catch(() => {});
+  }, []);
   const [pin, setPin] = useState("");
   const [pinErro, setPinErro] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const filtered = SEED_PARTNERS.filter((p) => {
+  const filtered = partners.filter((p) => {
     const matchCat = categoria === "Todas" || p.categoria === categoria;
     const matchBusca =
       p.nome.toLowerCase().includes(busca.toLowerCase()) ||
