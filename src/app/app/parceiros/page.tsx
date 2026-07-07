@@ -16,6 +16,7 @@ type Partner = {
   pin: string;
   emoji: string;
   status: string;
+  endereco?: string;
 };
 
 type ModalState =
@@ -149,6 +150,17 @@ export default function ParceirosPage() {
                     <p className="text-xs mt-1" style={{ color: "var(--verde-salvia)" }}>
                       {partner.descricao}
                     </p>
+                    {partner.endereco && (
+                      <a
+                        href={`https://maps.google.com/?q=${encodeURIComponent(partner.endereco)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs mt-1 flex items-center gap-1"
+                        style={{ color: "var(--verde-aura)" }}
+                      >
+                        📍 {partner.endereco}
+                      </a>
+                    )}
                   </div>
                 </div>
 
