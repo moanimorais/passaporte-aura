@@ -18,10 +18,10 @@ const faqs = [
   { pergunta: "Quanto tempo dura o Passaporte?", resposta: "Doze meses, de agosto de 2026 a agosto de 2027. Você aproveita os benefícios quando quiser, dentro desse período." },
   { pergunta: "Quantas experiências estão incluídas?", resposta: "São 40+ experiências entre Praia do Rosa, Garopaba e Imbituba. A lista completa fica disponível na sua área do cliente após a compra." },
   { pergunta: "A lista de parceiros pode mudar?", resposta: "Sim, novos parceiros podem ser adicionados ao longo da temporada. Você sempre terá acesso à lista atualizada na sua área do cliente." },
-  { pergunta: "Preciso pagar algo além do Passaporte?", resposta: "Não. O valor do Passaporte já inclui o benefício em cada parceiro. Alguns parceiros oferecem desconto, outros experiência gratuita — tudo descrito na sua área do cliente." },
+  { pergunta: "Preciso pagar algo além do Passaporte?", resposta: "Sim — mas muito menos. Os parceiros oferecem descontos exclusivos para portadores do Passaporte Aura. Cada desconto está detalhado na aba Parceiros do seu aplicativo. Você vai se surpreender com o quanto economiza." },
   { pergunta: "Quantas vezes posso usar cada benefício?", resposta: "Cada benefício pode ser usado uma vez por parceiro, durante a vigência do passaporte (ago/2026 a ago/2027)." },
   { pergunta: "Como o parceiro confere meu Passaporte?", resposta: "Você apresenta o passaporte (físico ou digital) e o parceiro valida pelo sistema. Simples e rápido." },
-  { pergunta: "Os eventos da Aura estão incluídos?", resposta: "Alguns eventos especiais da Aura têm benefícios exclusivos para portadores do Passaporte. Fique de olho nas novidades na sua área do cliente." },
+  { pergunta: "Os eventos da Aura estão incluídos?", resposta: "Não. Os eventos da Aura são produtos separados e não fazem parte do Passaporte. O Passaporte dá acesso aos benefícios exclusivos dos parceiros cadastrados." },
 ];
 
 export default function Home() {
@@ -113,7 +113,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
             {[
               { n: "1", titulo: "Apresente seu passaporte", desc: "Físico ou digital, no parceiro Aura, na hora de aproveitar a experiência." },
-              { n: "2", titulo: "Leve sua amiga e ganhe 50%", desc: "As duas vivem a experiência pagando o valor de uma. Prefere ir sozinha? 50% de desconto individual." },
+              { n: "2", titulo: "Use seu benefício", desc: "Cada parceiro tem um benefício exclusivo para portadores do Passaporte Aura. Confira a lista completa na aba Parceiros do app." },
               { n: "3", titulo: "Colecione experiências", desc: "Cada benefício vale uma vez por parceiro, dentro da temporada do passaporte." },
             ].map((s) => (
               <div key={s.n}>
@@ -274,9 +274,9 @@ export default function Home() {
           <p className="font-semibold mb-1" style={{ color: "var(--verde-aura)" }}>Aura Experience</p>
           <p className="text-xs" style={{ color: "var(--verde-salvia)" }}>Praia do Rosa · Garopaba · Imbituba · Santa Catarina · © 2026 Aura Experience</p>
         </div>
-        <div className="text-sm text-right" style={{ color: "var(--verde-oliva)" }}>
-          <p className="mb-1">@ @au.raexperience</p>
-          <p>oi@auraexperience.net.br</p>
+        <div className="text-sm text-right flex flex-col gap-1" style={{ color: "var(--verde-oliva)" }}>
+          <a href="https://instagram.com/au.raexperience" target="_blank" rel="noopener noreferrer" className="hover:opacity-70">@au.raexperience</a>
+          <a href="mailto:oi@auraexperience.net.br" className="hover:opacity-70" style={{ color: "var(--verde-oliva)" }}>oi@auraexperience.net.br</a>
         </div>
       </footer>
     </div>
