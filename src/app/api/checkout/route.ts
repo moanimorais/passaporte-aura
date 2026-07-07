@@ -31,8 +31,16 @@ export async function POST() {
       notification_url: `${SITE_URL}/api/webhook/mercadopago`,
       statement_descriptor: "AURA EXPERIENCE",
       payment_methods: {
-        excluded_payment_types: [],
+        excluded_payment_types: [
+          { id: "ticket" },
+          { id: "atm" },
+        ],
+        excluded_payment_methods: [
+          { id: "bolbradesco" },
+          { id: "pec" },
+        ],
         installments: 1,
+        default_payment_method_id: "pix",
       },
     },
   });
