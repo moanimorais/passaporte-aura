@@ -100,7 +100,7 @@ export default function ParceiroPage() {
         <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm"
           style={{ backgroundColor: "rgba(255,255,255,0.15)" }}>🌿</div>
         <div>
-          <p className="font-serif text-sm" style={{ color: "var(--creme)" }}>Aura Experience</p>
+          <p className="font-serif text-sm" style={{ color: "var(--creme)" }}>Passaporte Aura</p>
           <p className="text-xs opacity-60" style={{ color: "var(--verde-nevoa)" }}>Portal do Parceiro</p>
         </div>
       </header>

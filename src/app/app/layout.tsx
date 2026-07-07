@@ -95,9 +95,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           >
             🌿
           </div>
-          <span className="font-serif text-base" style={{ color: "var(--verde-aura)" }}>
-            Passaporte Aura
-          </span>
+          <div className="flex flex-col items-center leading-none" style={{ gap: "1px" }}>
+            <span className="text-xs tracking-widest uppercase" style={{ color: "var(--verde-aura)", fontFamily: "sans-serif", letterSpacing: "0.18em" }}>Passaporte</span>
+            <div style={{ width: "100%", height: "1px", backgroundColor: "var(--verde-aura)", opacity: 0.4 }} />
+            <span className="font-serif text-base tracking-wider" style={{ color: "var(--verde-aura)" }}>Aura</span>
+          </div>
         </div>
         <form action="/api/auth/logout" method="POST">
           <button
