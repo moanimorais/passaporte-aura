@@ -10,16 +10,16 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    // Aceita notificações de teste do painel MP
+    // Ignora testes simulados do painel e eventos que não são pagamento
     if (!body || body.type !== "payment") return NextResponse.json({ ok: true });
     if (!body.data?.id) return NextResponse.json({ ok: true });
+    if (body.live_mode === false) return NextResponse.json({ ok: true });
 
     const payment = new Payment(client);
     let data;
     try {
-      data = await payment.get({ id: body.data.id });
+      data = await payment.get({ id: String(body.data.id) });
     } catch {
-      // Pagamento não encontrado (teste simulado) — ignora
       return NextResponse.json({ ok: true });
     }
 
