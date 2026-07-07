@@ -8,6 +8,7 @@ const tabs = [
   { href: "/app", label: "Passaporte", icon: TabPassaporte },
   { href: "/app/parceiros", label: "Parceiros", icon: TabParceiros },
   { href: "/app/carimbos", label: "Carimbos", icon: TabCarimbos },
+  { href: "/app/suporte", label: "Suporte", icon: TabSuporte },
 ];
 
 function TabPassaporte({ active }: { active: boolean }) {
@@ -39,6 +40,21 @@ function TabParceiros({ active }: { active: boolean }) {
       />
       <path d="M8 12h8M12 8v8" stroke={active ? "var(--verde-aura)" : "var(--verde-salvia)"}
         strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function TabSuporte({ active }: { active: boolean }) {
+  return (
+    <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8"
+        stroke={active ? "var(--verde-aura)" : "var(--verde-salvia)"}
+        strokeWidth="1.8"
+        fill={active ? "var(--verde-nevoa)" : "none"}
+      />
+      <path d="M12 8v4M12 16h.01"
+        stroke={active ? "var(--verde-aura)" : "var(--verde-salvia)"}
+        strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }
