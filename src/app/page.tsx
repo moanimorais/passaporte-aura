@@ -1,6 +1,12 @@
 "use client";
 import { useState } from "react";
 
+async function irParaCheckout() {
+  const res = await fetch("/api/checkout", { method: "POST" });
+  const { url } = await res.json();
+  if (url) window.location.href = url;
+}
+
 const parceiros = [
   { categoria: "TURISMO & HOSPEDAGEM", nome: "Amo Garopaba Turismo", local: "Garopaba · SC" },
   { categoria: "KITESURF & WATER SPORTS", nome: "Escola Ktavento", local: "Imbituba · SC" },
@@ -38,9 +44,9 @@ export default function Home() {
           <a href="#parceiros" className="hover:opacity-70">Parceiros</a>
           <a href="#valores" className="hover:opacity-70">Valores</a>
         </div>
-        <a href="/login" className="text-sm font-medium px-5 py-2 rounded-full" style={{ backgroundColor: "var(--verde-aura)", color: "var(--papel)" }}>
+        <button onClick={irParaCheckout} className="text-sm font-medium px-5 py-2 rounded-full" style={{ backgroundColor: "var(--verde-aura)", color: "var(--papel)" }}>
           Quero meu Passaporte
-        </a>
+        </button>
       </nav>
 
       {/* HERO */}
@@ -57,9 +63,9 @@ export default function Home() {
           O Passaporte Aura dá acesso a benefícios em dezenas de experiências selecionadas entre Praia do Rosa, Garopaba e Imbituba, para você sair da rotina, conhecer gente nova e criar memórias com as amigas ou em casal.
         </p>
         <div className="flex gap-4 flex-wrap">
-          <a href="/login" className="px-6 py-3 rounded-full text-sm font-medium" style={{ backgroundColor: "var(--verde-aura)", color: "var(--papel)" }}>
+          <button onClick={irParaCheckout} className="px-6 py-3 rounded-full text-sm font-medium" style={{ backgroundColor: "var(--verde-aura)", color: "var(--papel)" }}>
             Quero meu Passaporte
-          </a>
+          </button>
           <a href="#como-funciona" className="px-6 py-3 rounded-full text-sm font-medium border" style={{ borderColor: "var(--verde-aura)", color: "var(--verde-aura)" }}>
             Como funciona
           </a>
@@ -187,9 +193,9 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <a href="/login" className="block w-full text-center rounded-full py-4 text-sm font-semibold border-2" style={{ borderColor: "var(--verde-aura)", color: "var(--verde-aura)" }}>
+              <button onClick={irParaCheckout} className="block w-full text-center rounded-full py-4 text-sm font-semibold border-2" style={{ borderColor: "var(--verde-aura)", color: "var(--verde-aura)" }}>
                 Quero o digital
-              </a>
+              </button>
             </div>
             <div className="rounded-3xl p-8 flex flex-col" style={{ backgroundColor: "var(--verde-aura)" }}>
               <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--verde-salvia)" }}>Mais querido</p>
@@ -257,9 +263,9 @@ export default function Home() {
         <p className="text-sm mb-8" style={{ color: "var(--verde-salvia)" }}>
           Seu próximo "vamos marcar" começa agora.
         </p>
-        <a href="/login" className="inline-block px-8 py-4 rounded-full text-sm font-semibold" style={{ backgroundColor: "var(--creme)", color: "var(--verde-aura)" }}>
+        <button onClick={irParaCheckout} className="px-8 py-4 rounded-full text-sm font-semibold" style={{ backgroundColor: "var(--creme)", color: "var(--verde-aura)" }}>
           Comprar meu Passaporte
-        </a>
+        </button>
       </section>
 
       {/* FOOTER */}
