@@ -271,8 +271,8 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="px-6 py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4" style={{ borderTop: "1px solid var(--verde-nevoa)" }}>
         <div>
-          <p className="font-semibold mb-1" style={{ color: "var(--verde-aura)" }}>Aura Experience</p>
-          <p className="text-xs" style={{ color: "var(--verde-salvia)" }}>Praia do Rosa · Garopaba · Imbituba · Santa Catarina · © 2026 Aura Experience</p>
+          <p className="font-semibold mb-1" style={{ color: "var(--verde-aura)" }}>Passaporte Aura</p>
+          <p className="text-xs" style={{ color: "var(--verde-salvia)" }}>Praia do Rosa · Garopaba · Imbituba · Santa Catarina · © 2026 Passaporte Aura</p>
         </div>
         <div className="text-sm text-right flex flex-col gap-1" style={{ color: "var(--verde-oliva)" }}>
           <a href="https://instagram.com/au.raexperience" target="_blank" rel="noopener noreferrer" className="hover:opacity-70">@au.raexperience</a>
