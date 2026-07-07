@@ -2,15 +2,8 @@
 import { useState } from "react";
 
 const parceiros = [
-  { categoria: "CERÂMICA", nome: "Ateliê Mano a Mano", local: "Ibiraquera · Praia do Rosa" },
-  { categoria: "PINTURA", nome: "Studio Wo.", local: "Garopaba" },
-  { categoria: "PILATES", nome: "Estúdio A1 Pilates", local: "Praia do Rosa" },
-  { categoria: "YOGA", nome: "Surya Yoga Garden", local: "Praia do Rosa" },
-  { categoria: "SURF", nome: "Rosa Surf School", local: "Ibiraquera" },
-  { categoria: "CAVALGADA", nome: "Cavalgadas Rosa Norte", local: "Ibiraquera" },
-  { categoria: "MASSAGEM", nome: "Paula Olmos Massagens", local: "Praia do Rosa" },
-  { categoria: "VINHO", nome: "Rosa dos Vinhos Winery", local: "Praia do Rosa" },
-  { categoria: "BALEIA & TURISMO", nome: "Ao Sul Natural Turismo", local: "Praia do Rosa · Garopaba" },
+  { categoria: "TURISMO & HOSPEDAGEM", nome: "Amo Garopaba Turismo", local: "Garopaba · SC" },
+  { categoria: "KITESURF & WATER SPORTS", nome: "Escola Ktavento", local: "Imbituba · SC" },
 ];
 
 const categorias = ["Cerâmica", "Pintura", "Pilates", "Yoga", "Surf", "Cavalgada", "Massagem & Spa", "Vinho & Gastronomia", "Cafés", "Pousadas", "Baleia & Turismo"];
@@ -166,7 +159,7 @@ export default function Home() {
             ))}
           </div>
           <p className="text-xs mt-6" style={{ color: "var(--verde-oliva)" }}>
-            * Parceiros ilustrativos para esta página. A curadoria final é definida a cada temporada.
+            Novos parceiros sendo incorporados à temporada 2026–2027.
           </p>
         </div>
       </section>
