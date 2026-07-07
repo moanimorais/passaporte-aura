@@ -10,10 +10,18 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    if (body.type !== "payment") return NextResponse.json({ ok: true });
+    // Aceita notificações de teste do painel MP
+    if (!body || body.type !== "payment") return NextResponse.json({ ok: true });
+    if (!body.data?.id) return NextResponse.json({ ok: true });
 
     const payment = new Payment(client);
-    const data = await payment.get({ id: body.data.id });
+    let data;
+    try {
+      data = await payment.get({ id: body.data.id });
+    } catch {
+      // Pagamento não encontrado (teste simulado) — ignora
+      return NextResponse.json({ ok: true });
+    }
 
     if (data.status !== "approved") return NextResponse.json({ ok: true });
 
