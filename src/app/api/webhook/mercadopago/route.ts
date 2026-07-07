@@ -67,7 +67,7 @@ export async function POST(request: Request) {
 
     // Envia email de boas-vindas com o link de acesso
     await resend.emails.send({
-      from: "Aura Experience <onboarding@resend.dev>",
+      from: "Passaporte Aura <onboarding@resend.dev>",
       to: email,
       bcc: ["moanipmorais@gmail.com"],
       subject: "Seu Passaporte Aura está pronto 🌿",
