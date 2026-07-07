@@ -36,7 +36,7 @@ export default function Home() {
           <div className="w-8 h-8 rounded-full border flex items-center justify-center text-xs" style={{ borderColor: "var(--verde-aura)", color: "var(--verde-aura)" }}>
             🌿
           </div>
-          <span className="font-medium text-sm" style={{ color: "var(--verde-aura)" }}>Aura Experience</span>
+          <span className="font-medium text-sm" style={{ color: "var(--verde-aura)" }}>Passaporte Aura</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm" style={{ color: "var(--verde-oliva)" }}>
           <a href="#o-que-e" className="hover:opacity-70">O que é</a>
