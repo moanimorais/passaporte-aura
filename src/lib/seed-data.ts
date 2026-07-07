@@ -22,7 +22,7 @@ export const SEED_PARTNERS = [
     descricao: "Aulas de kitesurf, stand up paddle, wing foil e tow foil surfing",
     pin: "6580",
     status: "ativo",
-    benefit: "Leve uma amiga e paguem o valor de uma só (50% de desconto para as duas)",
+    benefit: "Leve uma amiga e paguem o valor de uma só (50% de desconto para as duas) · Válido seg–sex, exceto feriados nacionais",
     emoji: "🪁",
   },
 ];

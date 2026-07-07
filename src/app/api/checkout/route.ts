@@ -40,7 +40,6 @@ export async function POST() {
           { id: "pec" },
         ],
         installments: 1,
-        default_payment_method_id: "pix",
       },
     },
   });
