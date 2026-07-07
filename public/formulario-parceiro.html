@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seja parceiro(a) da Aura Experience</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    background: #F2EDE3;
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+  }
+  .container { max-width: 640px; margin: 0 auto; }
+
+  .banner {
+    background: linear-gradient(135deg, #1B4332 0%, #40685E 55%, #2E5D4A 100%);
+    border-radius: 12px 12px 0 0;
+    padding: 52px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .banner::before {
+    content: "";
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(200,221,208,0.12);
+  }
+  .banner::after {
+    content: "";
+    position: absolute;
+    bottom: -70px; left: -40px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(200,221,208,0.08);
+  }
+  .banner h1 {
+    font-size: 34px;
+    font-weight: 400;
+    color: #F2EDE3;
+    line-height: 1.25;
+    position: relative;
+    z-index: 1;
+  }
+  .banner h1 em { font-style: italic; font-weight: 300; color: #C8DDD0; }
+  .banner p {
+    font-size: 14px;
+    color: #C8DDD0;
+    margin-top: 10px;
+    letter-spacing: 1.5px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .intro-card {
+    background: #fff;
+    border-top: 8px solid #40685E;
+    border-radius: 0 0 4px 4px;
+    padding: 28px 24px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  .intro-card h2 { font-size: 26px; font-weight: 400; color: #1B4332; margin-bottom: 14px; }
+  .intro-card p { font-size: 14px; color: #444; line-height: 1.65; margin-bottom: 12px; }
+  .required-note { font-size: 13px; color: #40685E; margin-top: 14px; }
+  .required-note span { color: #d93025; }
+
+  .card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .card label { display: block; font-size: 15px; color: #202124; margin-bottom: 16px; line-height: 1.5; }
+  .req { color: #d93025; margin-left: 4px; }
+
+  .input-line {
+    border: none;
+    border-bottom: 1px solid #bbb;
+    width: 100%;
+    padding: 6px 0;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    background: transparent;
+  }
+  .input-line::placeholder { color: #aaa; font-size: 13px; }
+
+  .input-area {
+    border: none;
+    border-bottom: 1px solid #bbb;
+    width: 100%;
+    padding: 6px 0;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    background: transparent;
+    resize: none;
+    font-family: inherit;
+    min-height: 30px;
+  }
+  .input-area::placeholder { color: #aaa; font-size: 13px; }
+
+  .radio-option, .check-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #333;
+  }
+  .radio-circle {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid #bbb;
+    flex-shrink: 0;
+  }
+  .check-box {
+    width: 18px; height: 18px;
+    border-radius: 2px;
+    border: 2px solid #bbb;
+    flex-shrink: 0;
+  }
+  .inline-input {
+    border: none;
+    border-bottom: 1px solid #bbb;
+    font-size: 13px;
+    outline: none;
+    width: 130px;
+    margin-left: 4px;
+    color: #555;
+  }
+
+  .section-title {
+    font-size: 17px;
+    font-weight: 500;
+    color: #1B4332;
+    padding: 14px 20px;
+    margin-top: 8px;
+    border-left: 4px solid #40685E;
+    background: #DDE8DC;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .submit-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .btn-submit {
+    background: #1B4332;
+    color: #F2EDE3;
+    border: none;
+    padding: 13px 36px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+  }
+  .btn-submit:hover { background: #40685E; }
+  .btn-clear { color: #40685E; font-size: 14px; cursor: pointer; background: none; border: none; font-weight: 500; }
+
+  .footer-note { text-align: center; font-size: 12px; color: #888; margin-top: 24px; line-height: 2; }
+  .footer-note a { color: #40685E; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- BANNER -->
+  <div class="banner">
+    <h1>Seja <em>parceiro(a)</em></h1>
+    <h1><em>da Aura Experience</em></h1>
+    <p>@au.raexperience</p>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-card">
+    <h2>Seja parceiro(a) da Aura Experience!</h2>
+    <p>Obrigada pelo interesse em construir algo junto com a gente ♥</p>
+    <p>Nossos eventos são pensados para criar experiências reais de conexão, bem-estar e vivências memoráveis — por isso, buscamos marcas que valorizem essa ideia e que desejem gerar valor real para as participantes.</p>
+    <p>Para manter a qualidade e o alinhamento das parcerias, criamos este formulário de cadastro. Através dele, conhecemos melhor sua marca, entendemos como podemos colaborar e também criamos um banco de parceiros para futuros eventos.</p>
+    <p>Todas as propostas passam por uma curadoria interna para garantir alinhamento com a essência da Aura Experience. Preencha com atenção 🌿</p>
+    <p>Entraremos em contato caso exista sinergia para os próximos eventos 💌</p>
+    <p class="required-note"><span>*</span> Indica uma pergunta obrigatória</p>
+  </div>
+
+  <!-- SEÇÃO 1 -->
+  <div class="section-title">Sobre a sua marca</div>
+
+  <div class="card">
+    <label>Nome da empresa/marca <span class="req">*</span></label>
+    <input type="text" class="input-line" placeholder="Sua resposta">
+  </div>
+
+  <div class="card">
+    <label>Cidade e estado de atuação <span class="req">*</span></label>
+    <input type="text" class="input-line" placeholder="Ex: Garopaba / Santa Catarina">
+  </div>
+
+  <div class="card">
+    <label>Instagram da marca <span class="req">*</span></label>
+    <input type="text" class="input-line" placeholder="@suamarca">
+  </div>
+
+  <div class="card">
+    <label>Site (se houver)</label>
+    <input type="text" class="input-line" placeholder="www.suamarca.com.br">
+  </div>
+
+  <div class="card">
+    <label>Nome completo do responsável <span class="req">*</span></label>
+    <input type="text" class="input-line" placeholder="Sua resposta">
+  </div>
+
+  <div class="card">
+    <label>Cargo/função na empresa <span class="req">*</span></label>
+    <input type="text" class="input-line" placeholder="Ex: Sócia, Gerente, Proprietário(a)">
+  </div>
+
+  <!-- SEÇÃO 2 -->
+  <div class="section-title">Contato</div>
+
+  <div class="card">
+    <label>Melhor forma de contato <span class="req">*</span></label>
+    <div class="radio-option"><div class="radio-circle"></div> WhatsApp</div>
+    <div class="radio-option"><div class="radio-circle"></div> E-mail</div>
+  </div>
+
+  <div class="card">
+    <label>WhatsApp <span class="req">*</span></label>
+    <input type="text" class="input-line" placeholder="(48) 99999-9999">
+  </div>
+
+  <div class="card">
+    <label>E-mail <span class="req">*</span></label>
+    <input type="text" class="input-line" placeholder="contato@suamarca.com.br">
+  </div>
+
+  <!-- SEÇÃO 3 -->
+  <div class="section-title">Perfil da sua marca</div>
+
+  <div class="card">
+    <label>O que sua empresa oferece <span class="req">*</span></label>
+    <div class="radio-option"><div class="radio-circle"></div> Produtos</div>
+    <div class="radio-option"><div class="radio-circle"></div> Serviços</div>
+    <div class="radio-option"><div class="radio-circle"></div> É um local/espaço</div>
+  </div>
+
+  <div class="card">
+    <label>Em poucas palavras, conte o que sua empresa faz (produto/serviço/nicho) <span class="req">*</span></label>
+    <textarea class="input-area" placeholder="Sua resposta"></textarea>
+  </div>
+
+  <div class="card">
+    <label>Público principal atendido <span class="req">*</span></label>
+    <div class="radio-option"><div class="radio-circle"></div> Mulheres</div>
+    <div class="radio-option"><div class="radio-circle"></div> Homens</div>
+    <div class="radio-option"><div class="radio-circle"></div> Misto</div>
+  </div>
+
+  <div class="card">
+    <label>Seus valores ou propósito se conectam com <span class="req">*</span></label>
+    <div class="check-option"><div class="check-box"></div> Bem-estar</div>
+    <div class="check-option"><div class="check-box"></div> Autocuidado</div>
+    <div class="check-option"><div class="check-box"></div> Saúde</div>
+    <div class="check-option"><div class="check-box"></div> Movimento / esporte</div>
+    <div class="check-option"><div class="check-box"></div> Lifestyle</div>
+    <div class="check-option"><div class="check-box"></div> Gastronomia</div>
+    <div class="check-option"><div class="check-box"></div> Arte &amp; criatividade</div>
+    <div class="check-option"><div class="check-box"></div> Desenvolvimento pessoal</div>
+    <div class="check-option"><div class="check-box"></div> Outro: <input type="text" class="inline-input"></div>
+  </div>
+
+  <div class="card">
+    <label>Já realizou parcerias ou ativações em eventos? <span class="req">*</span></label>
+    <div class="radio-option"><div class="radio-circle"></div> Sim, com frequência</div>
+    <div class="radio-option"><div class="radio-circle"></div> Algumas vezes</div>
+    <div class="radio-option"><div class="radio-circle"></div> Será a primeira experiência</div>
+  </div>
+
+  <!-- SEÇÃO 4 -->
+  <div class="section-title">Sua proposta de parceria</div>
+
+  <div class="card">
+    <label>O que sua marca estaria disposta a oferecer? <span class="req">*</span></label>
+    <div class="check-option"><div class="check-box"></div> Produtos para degustação</div>
+    <div class="check-option"><div class="check-box"></div> Produtos para brindes / kit das participantes</div>
+    <div class="check-option"><div class="check-box"></div> Serviços / experiências no evento</div>
+    <div class="check-option"><div class="check-box"></div> Sorteios</div>
+    <div class="check-option"><div class="check-box"></div> Descontos exclusivos para participantes</div>
+    <div class="check-option"><div class="check-box"></div> Espaço físico / local para o evento</div>
+    <div class="check-option"><div class="check-box"></div> Apoio financeiro / patrocínio</div>
+    <div class="check-option"><div class="check-box"></div> Divulgação conjunta</div>
+    <div class="check-option"><div class="check-box"></div> Outro: <input type="text" class="inline-input"></div>
+  </div>
+
+  <div class="card">
+    <label>O que motivou sua marca a buscar parceria com a Aura Experience? <span class="req">*</span></label>
+    <textarea class="input-area" placeholder="Sua resposta"></textarea>
+  </div>
+
+  <div class="card">
+    <label>Que tipo de experiência você gostaria que as participantes tivessem ao entrar em contato com sua marca? <span class="req">*</span></label>
+    <textarea class="input-area" placeholder="Sua resposta"></textarea>
+  </div>
+
+  <div class="card">
+    <label>Existe algo importante que gostaríamos de saber sobre sua marca? <span class="req">*</span></label>
+    <textarea class="input-area" placeholder="Sua resposta"></textarea>
+  </div>
+
+  <div class="card">
+    <label>Caso selecionada(o), sua marca teria disponibilidade para alinhamento prévio e presença durante o evento? <span class="req">*</span></label>
+    <div class="radio-option"><div class="radio-circle"></div> Sim</div>
+    <div class="radio-option"><div class="radio-circle"></div> Depende da agenda</div>
+    <div class="radio-option"><div class="radio-circle"></div> Preferimos apenas enviar produtos</div>
+  </div>
+
+  <div class="card">
+    <label>Qual o prazo necessário para aprovar a parceria/formato? <span class="req">*</span></label>
+    <div class="radio-option"><div class="radio-circle"></div> 30 dias de antecedência</div>
+    <div class="radio-option"><div class="radio-circle"></div> 15 dias de antecedência</div>
+    <div class="radio-option"><div class="radio-circle"></div> 7 dias de antecedência</div>
+  </div>
+
+  <div class="card">
+    <label>Existe alguma proposta criativa de ativação ou experiência que você gostaria de realizar conosco? <span class="req">*</span></label>
+    <textarea class="input-area" placeholder="Sua resposta"></textarea>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-area">
+    <button class="btn-submit">Enviar</button>
+    <button class="btn-clear">Limpar formulário</button>
+  </div>
+
+  <div class="footer-note">
+    <p>Nunca envie senhas pelo Google Formulários.</p>
+    <p>Este conteúdo foi criado pela Aura Experience · <a href="#">@au.raexperience</a></p>
+    <p style="font-size:14px;color:#bbb;margin-top:8px;">Google Formulários</p>
+  </div>
+
+</div>
+</body>
+</html>
