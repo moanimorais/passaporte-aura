@@ -208,7 +208,7 @@ export default function ParceiroPage() {
             <h2 className="font-serif text-2xl mb-2" style={{ color: "var(--verde-aura)" }}>Já Utilizado</h2>
             <p className="text-sm mb-6" style={{ color: "var(--verde-oliva)" }}>
               Este passaporte já utilizou o benefício nesta temporada.<br />
-              Vigência: ago/2026 – ago/2027.
+              Vigência: set/2026 – set/2027.
             </p>
             <button onClick={resetar} className="w-full rounded-xl py-4 font-medium border"
               style={{ borderColor: "var(--verde-salvia)", color: "var(--verde-oliva)", backgroundColor: "transparent" }}>

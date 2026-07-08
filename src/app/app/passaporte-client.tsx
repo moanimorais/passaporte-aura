@@ -20,7 +20,7 @@ export default function PassaporteClient({ perfil, usedCount, partnerCount }: Pr
   const tipo = perfil?.tipo === "fisico_digital" ? "Físico + Digital" : "Digital";
   const validade = perfil?.validade_fim
     ? new Date(perfil.validade_fim).toLocaleDateString("pt-BR", { month: "short", year: "numeric" })
-    : "ago/2027";
+    : "set/2027";
 
   return (
     <div className="px-5 py-6 max-w-md mx-auto">

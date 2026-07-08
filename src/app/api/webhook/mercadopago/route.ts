@@ -78,7 +78,7 @@ export async function POST(request: Request) {
             Bem-vinda ao Passaporte Aura${nome ? `, ${nome}` : ""}!
           </h1>
           <p style="color:#40685E;margin-bottom:24px;font-size:15px;text-align:center">
-            Seu Passaporte Digital está ativo para a temporada<br><strong>agosto/2026 – agosto/2027</strong>.
+            Seu Passaporte Digital está ativo para a temporada<br><strong>setembro/2026 – setembro/2027</strong>.
           </p>
 
           <a href="${link}"

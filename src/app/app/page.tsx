@@ -32,7 +32,7 @@ export default function PassaportePage() {
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
               ATIVO
             </span>
-            <span className="text-xs opacity-60" style={{ color: "var(--verde-nevoa)" }}>até ago/2027</span>
+            <span className="text-xs opacity-60" style={{ color: "var(--verde-nevoa)" }}>até set/2027</span>
           </div>
         </div>
 

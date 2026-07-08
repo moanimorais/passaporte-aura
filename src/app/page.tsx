@@ -15,11 +15,11 @@ const parceiros = [
 const categorias = ["Cerâmica", "Pintura", "Pilates", "Yoga", "Surf", "Cavalgada", "Massagem & Spa", "Vinho & Gastronomia", "Cafés", "Pousadas", "Baleia & Turismo"];
 
 const faqs = [
-  { pergunta: "Quanto tempo dura o Passaporte?", resposta: "Doze meses, de agosto de 2026 a agosto de 2027. Você aproveita os benefícios quando quiser, dentro desse período." },
+  { pergunta: "Quanto tempo dura o Passaporte?", resposta: "Doze meses, de 1 de setembro de 2026 a 1 de setembro de 2027. Você aproveita os benefícios quando quiser, dentro desse período." },
   { pergunta: "Quantas experiências estão incluídas?", resposta: "São 40+ experiências entre Praia do Rosa, Garopaba e Imbituba. A lista completa fica disponível na sua área do cliente após a compra." },
   { pergunta: "A lista de parceiros pode mudar?", resposta: "Sim, novos parceiros podem ser adicionados ao longo da temporada. Você sempre terá acesso à lista atualizada na sua área do cliente." },
   { pergunta: "Preciso pagar algo além do Passaporte?", resposta: "Sim — mas muito menos. Os parceiros oferecem descontos exclusivos para portadores do Passaporte Aura. Cada desconto está detalhado na aba Parceiros do seu aplicativo. Você vai se surpreender com o quanto economiza." },
-  { pergunta: "Quantas vezes posso usar cada benefício?", resposta: "Cada benefício pode ser usado uma vez por parceiro, durante a vigência do passaporte (ago/2026 a ago/2027)." },
+  { pergunta: "Quantas vezes posso usar cada benefício?", resposta: "Cada benefício pode ser usado uma vez por parceiro, durante a vigência do passaporte (set/2026 a set/2027)." },
   { pergunta: "Como o parceiro confere meu Passaporte?", resposta: "Você apresenta o passaporte (físico ou digital) e o parceiro valida pelo sistema. Simples e rápido." },
   { pergunta: "Os eventos da Aura estão incluídos?", resposta: "Não. Os eventos da Aura são produtos separados e não fazem parte do Passaporte. O Passaporte dá acesso aos benefícios exclusivos dos parceiros cadastrados." },
 ];
@@ -52,7 +52,7 @@ export default function Home() {
       {/* HERO */}
       <section className="px-6 py-20 max-w-4xl mx-auto">
         <p className="text-xs font-semibold tracking-widest uppercase mb-6" style={{ color: "var(--verde-oliva)" }}>
-          Temporada ago 2026 – ago 2027 · Praia do Rosa · SC
+          Temporada set 2026 – set 2027 · Praia do Rosa · SC
         </p>
         <h1 className="text-5xl md:text-6xl leading-tight mb-6" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
           Viva a Praia do Rosa{" "}
@@ -165,7 +165,7 @@ export default function Home() {
             ))}
           </div>
           <p className="text-xs mt-6" style={{ color: "var(--verde-oliva)" }}>
-            Novos parceiros sendo incorporados à temporada 2026–2027.
+            Novos parceiros sendo incorporados à temporada set/2026–set/2027.
           </p>
         </div>
       </section>
@@ -185,7 +185,7 @@ export default function Home() {
               <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--verde-oliva)" }}>Digital</p>
               <h3 className="text-2xl mb-2" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>Passaporte Digital</h3>
               <p className="text-5xl font-light mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>R$ 97</p>
-              <p className="text-xs mb-6" style={{ color: "var(--verde-oliva)" }}>pagamento único · validade ago/2026 – ago/2027</p>
+              <p className="text-xs mb-6" style={{ color: "var(--verde-oliva)" }}>pagamento único · validade set/2026 – set/2027</p>
               <ul className="flex flex-col gap-3 mb-8 flex-1">
                 {["Acesso completo pelo celular", "Todos os benefícios e experiências", "Atualizações em tempo real", "Área do cliente exclusiva"].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm">
@@ -201,7 +201,7 @@ export default function Home() {
               <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--verde-salvia)" }}>Mais querido</p>
               <h3 className="text-2xl mb-2" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "var(--creme)" }}>Físico + Digital</h3>
               <p className="text-3xl font-light mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "var(--verde-salvia)" }}>Em breve</p>
-              <p className="text-xs mb-6" style={{ color: "var(--verde-salvia)" }}>em breve · validade ago/2026 – ago/2027</p>
+              <p className="text-xs mb-6" style={{ color: "var(--verde-salvia)" }}>em breve · validade set/2026 – set/2027</p>
               <ul className="flex flex-col gap-3 mb-8 flex-1">
                 {["Tudo da versão digital", "Passaporte físico colecionável", "Espaço para carimbos das experiências", "Item exclusivo da edição 2026"].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm" style={{ color: "var(--verde-nevoa)" }}>
