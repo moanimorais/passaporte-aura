@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import { MercadoPagoConfig, Payment } from "mercadopago";
 import { Resend } from "resend";
 
-const client = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN! });
-const resend = new Resend(process.env.RESEND_API_KEY);
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://passaporte-aura.vercel.app";
 
 export async function POST(request: Request) {
   try {
+    const client = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN! });
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await request.json();
 
     // Ignora testes simulados do painel e eventos que não são pagamento

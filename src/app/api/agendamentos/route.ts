@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM = "Passaporte Aura <onboarding@resend.dev>";
 const DIAS = ["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
 
@@ -14,6 +13,7 @@ function formatarData(iso: string) {
 
 export async function POST(req: Request) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { parceiro_id, data_aula } = await req.json();
     if (!parceiro_id || !data_aula) {
       return NextResponse.json({ error: "Dados incompletos" }, { status: 400 });
