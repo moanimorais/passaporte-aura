@@ -3,30 +3,30 @@
 import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 
-const RECESSO = { inicio: new Date("2026-12-01"), fim: new Date("2027-01-31") };
 const ANTECEDENCIA_MIN_H = 24;
 const ANTECEDENCIA_MAX_DIAS = 7;
 
-function proximas8Tercas(): Date[] {
-  const datas: Date[] = [];
-  const hoje = new Date();
-  hoje.setHours(0, 0, 0, 0);
+const NOMES_DIA = ["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
 
+type Parceiro = {
+  nome: string;
+  descricao?: string;
+  dia_semana: number | null;
+  horario_aula: string | null;
+};
+
+function proximasDatas(diaSemana: number): Date[] {
+  const datas: Date[] = [];
   const agora = new Date();
   const limite = new Date(agora.getTime() + ANTECEDENCIA_MAX_DIAS * 24 * 60 * 60 * 1000);
-
-  // Começa amanhã (mínimo 24h de antecedência)
   const inicio = new Date(agora.getTime() + ANTECEDENCIA_MIN_H * 60 * 60 * 1000);
-  inicio.setHours(15, 30, 0, 0);
 
   const cursor = new Date(inicio);
-  // Avança até a próxima terça
-  while (cursor.getDay() !== 2) cursor.setDate(cursor.getDate() + 1);
+  cursor.setHours(0, 0, 0, 0);
+  while (cursor.getDay() !== diaSemana) cursor.setDate(cursor.getDate() + 1);
 
   while (datas.length < 8 && cursor <= limite) {
-    const d = new Date(cursor);
-    const emRecesso = d >= RECESSO.inicio && d <= RECESSO.fim;
-    if (!emRecesso) datas.push(d);
+    datas.push(new Date(cursor));
     cursor.setDate(cursor.getDate() + 7);
   }
 
@@ -41,17 +41,44 @@ function toISO(d: Date): string {
   return d.toISOString().slice(0, 10);
 }
 
+function formatarHorario(h: string | null): string {
+  if (!h) return "horário a confirmar";
+  return h.slice(0, 5).replace(":", "h");
+}
+
 type Agendamento = { data_aula: string; status: string };
 
 export default function AgendarPage({ params }: { params: Promise<{ id: string }> }) {
   const { id: parceiroId } = use(params);
   const router = useRouter();
-  const [datas] = useState<Date[]>(proximas8Tercas);
+  const [parceiro, setParceiro] = useState<Parceiro | null>(null);
+  const [datas, setDatas] = useState<Date[]>([]);
   const [selecionada, setSelecionada] = useState<Date | null>(null);
   const [meus, setMeus] = useState<Agendamento[]>([]);
   const [loading, setLoading] = useState(false);
   const [sucesso, setSucesso] = useState(false);
   const [erro, setErro] = useState("");
+
+  useEffect(() => {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!url || !key) return;
+
+    fetch(`${url}/rest/v1/partners?id=eq.${parceiroId}&select=nome,descricao,dia_semana,horario_aula`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` },
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data) && data[0]) {
+          const p = data[0] as Parceiro;
+          setParceiro(p);
+          if (p.dia_semana !== null && p.dia_semana !== undefined) {
+            setDatas(proximasDatas(p.dia_semana));
+          }
+        }
+      })
+      .catch(() => {});
+  }, [parceiroId]);
 
   useEffect(() => {
     fetch(`/api/agendamentos?parceiro_id=${parceiroId}`)
@@ -83,6 +110,9 @@ export default function AgendarPage({ params }: { params: Promise<{ id: string }
     }
   }
 
+  const horarioLabel = formatarHorario(parceiro?.horario_aula ?? null);
+  const diaLabel = parceiro?.dia_semana != null ? NOMES_DIA[parceiro.dia_semana] + "s" : "";
+
   if (sucesso) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center"
@@ -95,13 +125,13 @@ export default function AgendarPage({ params }: { params: Promise<{ id: string }
           Reserva confirmada!
         </h1>
         <p className="text-sm mb-1" style={{ color: "var(--verde-oliva)" }}>
-          Aglaia — Pintura intuitiva
+          {parceiro?.nome}
         </p>
         <p className="text-sm mb-8" style={{ color: "var(--verde-salvia)" }}>
-          {selecionada && formatarData(selecionada)} às 15h30
+          {selecionada && formatarData(selecionada)} às {horarioLabel}
         </p>
         <p className="text-xs mb-8 px-4" style={{ color: "var(--verde-salvia)" }}>
-          A Aglaia receberá uma notificação com seu nome e horário.
+          A parceira receberá uma notificação com seu nome e horário.
           Se não puder comparecer, cancele pelo app com pelo menos 24h de antecedência.
         </p>
         <button
@@ -126,14 +156,24 @@ export default function AgendarPage({ params }: { params: Promise<{ id: string }
           Agendamento
         </p>
         <h1 className="font-serif text-2xl" style={{ color: "var(--verde-aura)" }}>
-          Aglaia
+          {parceiro?.nome ?? "..."}
         </h1>
-        <p className="text-sm mt-1" style={{ color: "var(--verde-oliva)" }}>
-          Pintura intuitiva e terapêutica · toda terça às 15h30
-        </p>
+        {diaLabel && (
+          <p className="text-sm mt-1" style={{ color: "var(--verde-oliva)" }}>
+            {parceiro?.descricao} · toda {diaLabel} às {horarioLabel}
+          </p>
+        )}
       </div>
 
-      {datas.length === 0 ? (
+      {!parceiro ? (
+        <p className="text-sm text-center" style={{ color: "var(--verde-salvia)" }}>Carregando...</p>
+      ) : parceiro.dia_semana === null ? (
+        <div className="rounded-xl p-5 text-center" style={{ backgroundColor: "var(--creme)" }}>
+          <p className="text-sm" style={{ color: "var(--verde-salvia)" }}>
+            Agendamento em breve — estamos definindo os dias disponíveis.
+          </p>
+        </div>
+      ) : datas.length === 0 ? (
         <div className="rounded-xl p-5 text-center" style={{ backgroundColor: "var(--creme)" }}>
           <p className="text-sm" style={{ color: "var(--verde-salvia)" }}>
             Nenhuma data disponível nos próximos 7 dias.<br />
@@ -169,7 +209,7 @@ export default function AgendarPage({ params }: { params: Promise<{ id: string }
                       </p>
                       <p className="text-xs mt-0.5"
                         style={{ color: sel ? "rgba(242,237,221,0.8)" : "var(--verde-salvia)" }}>
-                        às 15h30
+                        às {horarioLabel}
                       </p>
                     </div>
                     {reservado ? (

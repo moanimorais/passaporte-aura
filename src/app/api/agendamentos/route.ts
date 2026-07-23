@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
     const { data: parceiro } = await supabase
       .from("partners")
-      .select("nome, email_parceiro")
+      .select("nome, email_parceiro, horario_aula")
       .eq("id", parceiro_id)
       .single();
 
@@ -45,9 +45,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Você já tem reserva nesta data" }, { status: 409 });
     }
 
+    const horario = parceiro.horario_aula ?? "00:00";
     const { data: agendamento, error } = await supabase
       .from("agendamentos")
-      .insert({ user_id: user.id, parceiro_id, data_aula, horario: "15:30", status: "reservado" })
+      .insert({ user_id: user.id, parceiro_id, data_aula, horario, status: "reservado" })
       .select()
       .single();
 
@@ -62,7 +63,7 @@ export async function POST(req: Request) {
         from: FROM,
         to: parceiro.email_parceiro,
         bcc: ["moanipmorais@gmail.com"],
-        subject: `📅 Nova reserva — ${nome} — ${dataFormatada} às 15h30`,
+        subject: `📅 Nova reserva — ${nome} — ${dataFormatada} às ${horario.slice(0,5).replace(":",  "h")}`,
         html: `
           <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;background:#F2EDE3">
             <p style="text-align:center;font-size:24px;margin-bottom:4px">📅</p>
@@ -81,7 +82,7 @@ export async function POST(req: Request) {
                 <strong>📅 Data:</strong> ${dataFormatada}
               </p>
               <p style="color:#1B4332;font-size:15px;margin:0">
-                <strong>🕐 Horário:</strong> 15h30
+                <strong>🕐 Horário:</strong> ${horario.slice(0,5).replace(":", "h")}
               </p>
             </div>
 
