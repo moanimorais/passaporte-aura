@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { SEED_PARTNERS, SEED_REDEMPTIONS } from "@/lib/seed-data";
 
 const CATEGORIAS = ["Todas", "Gastronomia", "Surf & Esportes", "Hospedagem", "Artesanato", "Bem-estar"];
@@ -17,6 +18,7 @@ type Partner = {
   emoji: string;
   status: string;
   endereco?: string;
+  tipo_beneficio?: "beneficio" | "agendamento";
 };
 
 type ModalState =
@@ -26,6 +28,7 @@ type ModalState =
   | { type: "error"; partner: Partner };
 
 export default function ParceirosPage() {
+  const router = useRouter();
   const [categoria, setCategoria] = useState("Todas");
   const [busca, setBusca] = useState("");
   const [usados, setUsados] = useState<string[]>(SEED_REDEMPTIONS);
@@ -181,6 +184,17 @@ export default function ParceirosPage() {
                     <span className="text-xs" style={{ color: "var(--verde-salvia)" }}>
                       Benefício já utilizado
                     </span>
+                  ) : partner.tipo_beneficio === "agendamento" ? (
+                    <button
+                      onClick={() => router.push(`/app/agendar/${partner.id}`)}
+                      className="text-xs font-medium px-3 py-1.5 rounded-lg transition-all active:scale-95"
+                      style={{
+                        backgroundColor: "var(--verde-aura)",
+                        color: "var(--papel)",
+                      }}
+                    >
+                      📅 Agendar
+                    </button>
                   ) : (
                     <button
                       onClick={() => abrirModal(partner)}
