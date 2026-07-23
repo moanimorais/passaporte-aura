@@ -19,6 +19,8 @@ type Partner = {
   status: string;
   endereco?: string;
   tipo_beneficio?: "beneficio" | "agendamento";
+  pausa?: string;
+  alta_temporada?: string;
 };
 
 type ModalState =
@@ -40,7 +42,7 @@ export default function ParceirosPage() {
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     if (!supabaseUrl || !supabaseKey) return;
 
-    fetch(`${supabaseUrl}/rest/v1/partners?status=eq.ativo&select=id,nome,categoria,cidade,instagram,descricao,benefit,pin,emoji,status`, {
+    fetch(`${supabaseUrl}/rest/v1/partners?status=eq.ativo&select=id,nome,categoria,cidade,instagram,descricao,benefit,pin,emoji,status,endereco,tipo_beneficio,pausa,alta_temporada`, {
       headers: {
         apikey: supabaseKey,
         Authorization: `Bearer ${supabaseKey}`,
@@ -153,12 +155,24 @@ export default function ParceirosPage() {
                     <p className="text-xs mt-1" style={{ color: "var(--verde-salvia)" }}>
                       {partner.descricao}
                     </p>
+                    {partner.pausa && (
+                      <p className="text-xs mt-1.5 flex items-center gap-1" style={{ color: "var(--verde-salvia)" }}>
+                        <span>⏸</span>
+                        <span>Pausa: {partner.pausa}</span>
+                      </p>
+                    )}
+                    {partner.alta_temporada && (
+                      <p className="text-xs mt-1 flex items-start gap-1" style={{ color: "var(--verde-oliva)" }}>
+                        <span className="flex-shrink-0">☀️</span>
+                        <span>Alta temporada: {partner.alta_temporada}</span>
+                      </p>
+                    )}
                     {partner.endereco && (
                       <a
                         href={`https://maps.google.com/?q=${encodeURIComponent(partner.endereco)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs mt-1 flex items-center gap-1"
+                        className="text-xs mt-1.5 flex items-center gap-1"
                         style={{ color: "var(--verde-aura)" }}
                       >
                         📍 {partner.endereco}
